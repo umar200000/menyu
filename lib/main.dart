@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ovqatlar_minyusi/model_page/categories_model.dart';
+import 'package:ovqatlar_minyusi/widgets/categories_meals_screens.dart';
 
 import 'food_menu.dart';
 
@@ -19,11 +20,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: false,
         primarySwatch: Colors.amber,
-        fontFamily: GoogleFonts.adventPro().fontFamily,
+        fontFamily: GoogleFonts.caudex().fontFamily,
       ),
       home: CategoriesScreen(
         list: categories.categoriesList,
       ),
+      routes: {
+        '/categories_meals_screens': (ctx) => CategoriesMealsScreens(),
+      },
     );
   }
 }
