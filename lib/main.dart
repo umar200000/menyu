@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ovqatlar_minyusi/model_page/categories_model.dart';
+import 'package:ovqatlar_minyusi/model_page/meals_model.dart';
 import 'package:ovqatlar_minyusi/widgets/categories_meals_screens.dart';
+import 'package:ovqatlar_minyusi/widgets/meal_items.dart';
 
 import 'food_menu.dart';
 
@@ -15,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Categories categories = Categories();
+    MealsKeeper mealsKeeper = MealsKeeper();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -23,10 +26,10 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.caudex().fontFamily,
       ),
       home: CategoriesScreen(
-        list: categories.categoriesList,
-      ),
+          list: categories.categoriesList, mealsList: mealsKeeper.mealsList),
       routes: {
         '/categories_meals_screens': (ctx) => CategoriesMealsScreens(),
+        MealItems.routName: (ctx) => MealItems(),
       },
     );
   }

@@ -18,17 +18,17 @@ class Categories {
       imgUrl: "assets/images/fastfood.jpg",
     ),
     CategoriesModel(
-      id: "c4",
+      id: "c2",
       title: "Pizza",
       imgUrl: "assets/images/pitsa.jpg",
     ),
     CategoriesModel(
-      id: "c2",
+      id: "c3",
       title: "Milliy Tovomlar",
       imgUrl: "assets/images/hoji.jpg",
     ),
     CategoriesModel(
-      id: "c3",
+      id: "c4",
       title: "Turk Tovomlar",
       imgUrl: "assets/images/turk.jpg",
     ),
