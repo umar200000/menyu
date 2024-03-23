@@ -6,7 +6,7 @@ class MealsModel {
   final List<String> ingredients;
   final String description;
   final int preparingTime;
-  final String imhUrl;
+  final List<String> imhUrl;
   bool isLike;
 
   MealsModel({
@@ -31,7 +31,12 @@ class MealsKeeper {
       price: 30000,
       ingredients: ["go'sht", "pamidor", 'sir', 'hamir'],
       description: "Ajoyib Lavash judda mazzali",
-      imhUrl: "assets/images/lavash.jpg",
+      imhUrl: [
+        "assets/images/lavash.jpg",
+        "assets/images/lavash2.jpg",
+        "assets/images/lavash3.jpg",
+        "assets/images/lavash4.jpg"
+      ],
       preparingTime: 10,
     ),
     MealsModel(
@@ -41,7 +46,11 @@ class MealsKeeper {
       price: 35000,
       ingredients: ["go'sht", "pamidor", 'sir', 'non'],
       description: "Ajoyib Burger judda mazzali",
-      imhUrl: "assets/images/burger.jpg",
+      imhUrl: [
+        "assets/images/burger.jpg",
+        "assets/images/burger2.jpg",
+        "assets/images/burger3.jpg"
+      ],
       preparingTime: 15,
     ),
     MealsModel(
@@ -51,7 +60,7 @@ class MealsKeeper {
       price: 20000,
       ingredients: ["sasiska", "pamidor", 'sir', 'non'],
       description: "Ajoyib Hot-dog judda mazzali",
-      imhUrl: "assets/images/hotdog.jpg",
+      imhUrl: ["assets/images/hotdog.jpg", 'assets/images/hutdog2.jpg'],
       preparingTime: 10,
     ),
     MealsModel(
@@ -61,7 +70,7 @@ class MealsKeeper {
       price: 55000,
       ingredients: ['sir', 'hamir'],
       description: "Ajoyib Pishloqli Pizza judda mazzali",
-      imhUrl: "assets/images/pizzaSrliy.jpg",
+      imhUrl: ["assets/images/pizzaSrliy.jpg", "assets/images/paparoni2.jpg"],
       preparingTime: 10,
     ),
     MealsModel(
@@ -71,7 +80,7 @@ class MealsKeeper {
       price: 65000,
       ingredients: ["kalbasa", 'sir', 'hamir'],
       description: "Ajoyib pepperoni Pizza judda mazzali",
-      imhUrl: "assets/images/pitsa.jpg",
+      imhUrl: ["assets/images/pitsa.jpg", "assets/images/paparoni2.jpg"],
       preparingTime: 10,
     ),
     MealsModel(
@@ -81,7 +90,10 @@ class MealsKeeper {
       price: 60000,
       ingredients: ["qo'ziqorin", 'sir', 'hamir'],
       description: "Ajoyib Qo'ziqorinliy Pizza judda mazzali",
-      imhUrl: "assets/images/pizzaQoziqorinli.jpg",
+      imhUrl: [
+        "assets/images/pizzaQoziqorinli.jpg",
+        'assets/images/paparoni2.jpg'
+      ],
       preparingTime: 10,
     ),
     MealsModel(
@@ -91,7 +103,10 @@ class MealsKeeper {
       price: 25000,
       ingredients: ["guruch", "go'sht", 'sabzi'],
       description: "Ajoyib To'y Oshi judda mazzali",
-      imhUrl: "assets/images/hoji.jpg",
+      imhUrl: [
+        "assets/images/hoji.jpg",
+        "assets/images/osh2.jpg",
+      ],
       preparingTime: 5,
     ),
     MealsModel(
@@ -101,7 +116,7 @@ class MealsKeeper {
       price: 7000,
       ingredients: ["go'sht", 'piyoz', "hamir"],
       description: "Ajoyib Somsa judda mazzali",
-      imhUrl: "assets/images/somsa.jpg",
+      imhUrl: ["assets/images/somsa.jpg"],
       preparingTime: 5,
     ),
     MealsModel(
@@ -111,7 +126,10 @@ class MealsKeeper {
       price: 40000,
       ingredients: ["shikolat", "krem", "olcha"],
       description: "Ajoyib Olchali Piro'k judda mazzali",
-      imhUrl: "assets/images/shirinliklar.jpg",
+      imhUrl: [
+        "assets/images/shirinliklar.jpg",
+        "assets/images/shirinlik2.jpg"
+      ],
       preparingTime: 3,
     ),
     MealsModel(
@@ -121,7 +139,7 @@ class MealsKeeper {
       price: 35000,
       ingredients: ["tavro'k", "hamir"],
       description: "Ajoyib Tvaro'kli Piro'k judda mazzali",
-      imhUrl: "assets/images/pirok.jpg",
+      imhUrl: ["assets/images/pirok.jpg", 'assets/images/shirinlik2.jpg'],
       preparingTime: 3,
     ),
     MealsModel(
@@ -131,7 +149,7 @@ class MealsKeeper {
       price: 7000,
       ingredients: ["shakar"],
       description: "Muzdekina Cola",
-      imhUrl: "assets/images/kola10.jpg",
+      imhUrl: ["assets/images/kola10.jpg", "assets/images/kola2.jpg"],
       preparingTime: 3,
     ),
   ];

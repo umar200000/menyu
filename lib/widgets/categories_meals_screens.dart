@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ovqatlar_minyusi/model_page/meals_model.dart';
 import 'package:ovqatlar_minyusi/widgets/meal_items.dart';
 
+import 'meals-photo.dart';
+
 class CategoriesMealsScreens extends StatelessWidget {
   // final String foodName;
   CategoriesMealsScreens({super.key});
@@ -19,75 +21,18 @@ class CategoriesMealsScreens extends StatelessWidget {
     return Scaffold(
       // backgroundColor: Colors.red,
       appBar: AppBar(
-        title: Text(foodName),
+        title: Text(
+          foodName,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: list.length > 0
           ? ListView.builder(
               padding: EdgeInsets.all(15),
               itemBuilder: (contex, index) {
-                return GestureDetector(
-                  onTap: () {
-                    goToMealIteam(context);
-                  },
-                  child: Card(
-                    clipBehavior: Clip.hardEdge,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(20), bottom: Radius.circular(5)),
-                    ),
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: Image.asset(
-                                list[index].imhUrl,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Positioned(
-                              right: 0,
-                              bottom: 0,
-                              child: Container(
-                                alignment: Alignment.centerRight,
-                                width: 200,
-                                padding: EdgeInsets.all(10),
-                                color: Colors.black.withOpacity(0.5),
-                                child: Text(
-                                  list[index].title,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  list[index].isLike
-                                      ? Icons.favorite
-                                      : Icons.favorite_outline,
-                                ),
-                              ),
-                              Text("${list[index].preparingTime} minut"),
-                              Text("${list[index].price} so'm"),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                return MealPhoto(
+                  meal: list[index],
                 );
               },
               itemCount: list.length,
