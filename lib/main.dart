@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ovqatlar_minyusi/bottom_bar.dart';
 import 'package:ovqatlar_minyusi/model_page/categories_model.dart';
 import 'package:ovqatlar_minyusi/model_page/meals_model.dart';
 import 'package:ovqatlar_minyusi/widgets/categories_meals_screens.dart';
@@ -16,8 +17,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Categories categories = Categories();
-    MealsKeeper mealsKeeper = MealsKeeper();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -25,9 +24,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.amber,
         fontFamily: GoogleFonts.caudex().fontFamily,
       ),
-      home: CategoriesScreen(
-          list: categories.categoriesList, mealsList: mealsKeeper.mealsList),
+      initialRoute: '/',
       routes: {
+        '/': (ctx) => BottomBar(),
         '/categories_meals_screens': (ctx) => CategoriesMealsScreens(),
         MealItems.routName: (ctx) => MealItems(),
       },
