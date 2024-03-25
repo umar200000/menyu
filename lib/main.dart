@@ -6,14 +6,14 @@ import 'package:ovqatlar_minyusi/model_page/meals_model.dart';
 import 'package:ovqatlar_minyusi/widgets/categories_meals_screens.dart';
 import 'package:ovqatlar_minyusi/widgets/meal_items.dart';
 
-import 'food_menu.dart';
-
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Categories categories = Categories();
+  final MealsKeeper mealsKeeper = MealsKeeper();
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (ctx) => BottomBar(),
+        '/': (ctx) => BottomBar(
+            categoryList: categories.categoriesList,
+            mealsList: mealsKeeper.mealsList),
         '/categories_meals_screens': (ctx) => CategoriesMealsScreens(),
         MealItems.routName: (ctx) => MealItems(),
       },

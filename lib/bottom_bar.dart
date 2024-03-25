@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:ovqatlar_minyusi/widgets/favorite_page.dart';
 
 import 'food_menu.dart';
 import 'model_page/categories_model.dart';
 import 'model_page/meals_model.dart';
 
 class BottomBar extends StatefulWidget {
-  BottomBar({super.key});
+  List<CategoriesModel> categoryList;
+  List<MealsModel> mealsList;
+
+  BottomBar({
+    super.key,
+    required this.categoryList,
+    required this.mealsList,
+  });
 
   @override
   State<BottomBar> createState() => _BottomBarState();
@@ -13,10 +21,19 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   int bottomIndex = 0;
+  List<Widget> list = [];
 
-  Categories categories = Categories();
-
-  MealsKeeper mealsKeeper = MealsKeeper();
+  @override
+  void initState() {
+    list = [
+      CategoriesScreen(
+        list: widget.categoryList,
+        mealsList: widget.mealsList,
+      ),
+      FavoritePage(),
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,19 +43,12 @@ class _BottomBarState extends State<BottomBar> {
             style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
       ),
-      body: bottomIndex == 0
-          ? CategoriesScreen(
-              list: categories.categoriesList,
-              mealsList: mealsKeeper.mealsList,
-            )
-          : Center(
-              child: Text("Sevimli Ovqatlar Mavjud Emas!"),
-            ),
+      body: list[bottomIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,
         currentIndex: bottomIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
         onTap: (value) {
           setState(() {
             bottomIndex = value;
