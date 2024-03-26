@@ -7,7 +7,6 @@ class MealsModel {
   final String description;
   final int preparingTime;
   final List<String> imhUrl;
-  bool isLike;
 
   MealsModel({
     required this.id,
@@ -18,7 +17,6 @@ class MealsModel {
     required this.description,
     required this.imhUrl,
     required this.preparingTime,
-    this.isLike = false,
   });
 }
 
@@ -153,5 +151,19 @@ class MealsKeeper {
       preparingTime: 3,
     ),
   ];
+  List<MealsModel> _favorite = [];
   get mealsList => _list;
+  List<MealsModel> favoriteMealsList() => _favorite;
+
+  void toggleLike10(String id, int a) {
+    final index10 = _favorite.indexWhere((element) => element.id == id);
+    if (index10 < 0) {
+      print(a);
+      a >= 0
+          ? _favorite.insert(a, _list.firstWhere((element) => element.id == id))
+          : _favorite.add(_list.firstWhere((element) => element.id == id));
+    } else {
+      _favorite.removeWhere((element) => element.id == id);
+    }
+  }
 }

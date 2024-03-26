@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:ovqatlar_minyusi/widgets/favorite_page.dart';
+import 'package:ovqatlar_minyusi/widgets/menu_drawer.dart';
 
 import 'food_menu.dart';
 import 'model_page/categories_model.dart';
 import 'model_page/meals_model.dart';
 
 class BottomBar extends StatefulWidget {
-  List<CategoriesModel> categoryList;
-  List<MealsModel> mealsList;
+  final List<CategoriesModel> categoryList;
+  final MealsKeeper mealsKeeper;
+  final void Function(String id, int a) toggleLike;
+  final bool Function(String id) isLike;
 
-  BottomBar({
+  const BottomBar({
     super.key,
     required this.categoryList,
-    required this.mealsList,
+    required this.mealsKeeper,
+    required this.toggleLike,
+    required this.isLike,
   });
 
   @override
@@ -28,9 +33,13 @@ class _BottomBarState extends State<BottomBar> {
     list = [
       CategoriesScreen(
         list: widget.categoryList,
-        mealsList: widget.mealsList,
+        mealsList: widget.mealsKeeper.mealsList,
       ),
-      FavoritePage(),
+      FavoritePage(
+        widget.mealsKeeper.favoriteMealsList(),
+        widget.toggleLike,
+        widget.isLike,
+      ),
     ];
     super.initState();
   }
@@ -43,12 +52,13 @@ class _BottomBarState extends State<BottomBar> {
             style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
       ),
+      drawer: MenuDrawer(),
       body: list[bottomIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,
         currentIndex: bottomIndex,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.white,
         onTap: (value) {
           setState(() {
             bottomIndex = value;

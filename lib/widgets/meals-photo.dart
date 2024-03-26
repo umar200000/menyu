@@ -5,7 +5,13 @@ import 'meal_items.dart';
 
 class MealPhoto extends StatelessWidget {
   final MealsModel meal;
-  const MealPhoto({super.key, required this.meal});
+  final void Function(String id, int a) toggleLike;
+  final bool Function(String id) isLike;
+  const MealPhoto(
+      {super.key,
+      required this.meal,
+      required this.toggleLike,
+      required this.isLike});
 
   void goToMealIteam(BuildContext context) {
     Navigator.pushNamed(context, MealItems.routName, arguments: meal);
@@ -60,9 +66,12 @@ class MealPhoto extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      toggleLike(meal.id, -1);
+                    },
                     icon: Icon(
-                      meal.isLike ? Icons.favorite : Icons.favorite_outline,
+                      isLike(meal.id) ? Icons.favorite : Icons.favorite_outline,
+                      color: Colors.black54,
                     ),
                   ),
                   Text("${meal.preparingTime} minut"),

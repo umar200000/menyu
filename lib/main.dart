@@ -10,10 +10,25 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final Categories categories = Categories();
   final MealsKeeper mealsKeeper = MealsKeeper();
-  MyApp({super.key});
+
+  void toggleLike(String id, int a) {
+    setState(() {
+      mealsKeeper.toggleLike10(id, a);
+    });
+  }
+
+  bool isLike(String id) {
+    return mealsKeeper.favoriteMealsList().any((element) => element.id == id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +42,13 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (ctx) => BottomBar(
-            categoryList: categories.categoriesList,
-            mealsList: mealsKeeper.mealsList),
-        '/categories_meals_screens': (ctx) => CategoriesMealsScreens(),
+              categoryList: categories.categoriesList,
+              mealsKeeper: mealsKeeper,
+              toggleLike: toggleLike,
+              isLike: isLike,
+            ),
+        '/categories_meals_screens': (ctx) =>
+            CategoriesMealsScreens(toggleLike, isLike),
         MealItems.routName: (ctx) => MealItems(),
       },
     );

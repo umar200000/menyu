@@ -5,8 +5,9 @@ import 'package:ovqatlar_minyusi/widgets/meal_items.dart';
 import 'meals-photo.dart';
 
 class CategoriesMealsScreens extends StatelessWidget {
-  // final String foodName;
-  CategoriesMealsScreens({super.key});
+  final void Function(String id, int a) toggleLike;
+  final bool Function(String id) isLike;
+  const CategoriesMealsScreens(this.toggleLike, this.isLike, {super.key});
 
   void goToMealIteam(BuildContext context) {
     Navigator.pushNamed(context, MealItems.routName);
@@ -33,6 +34,8 @@ class CategoriesMealsScreens extends StatelessWidget {
               itemBuilder: (contex, index) {
                 return MealPhoto(
                   meal: list[index],
+                  toggleLike: toggleLike,
+                  isLike: isLike,
                 );
               },
               itemCount: list.length,
