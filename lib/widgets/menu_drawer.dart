@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ovqatlar_minyusi/widgets/productScreen.dart';
+
+import '../bottom_bar.dart';
 
 class MenuDrawer extends StatelessWidget {
   const MenuDrawer({super.key});
@@ -24,9 +27,13 @@ class MenuDrawer extends StatelessWidget {
           automaticallyImplyLeading: false,
           centerTitle: true,
         ),
-        listTileFun(Icons.home, "Bosh Sahifa", () {}),
+        listTileFun(Icons.home, "Bosh Sahifa", () {
+          Navigator.pushReplacementNamed(context, BottomBar.routeName);
+        }),
         Divider(height: 0),
-        listTileFun(Icons.category, "Mahsulotlar", () {}),
+        listTileFun(Icons.category, "Mahsulotlar", () {
+          Navigator.pushReplacementNamed(context, ProductScreen.routeName);
+        }),
       ],
     ));
   }

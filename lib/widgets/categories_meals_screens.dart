@@ -9,10 +9,6 @@ class CategoriesMealsScreens extends StatelessWidget {
   final bool Function(String id) isLike;
   const CategoriesMealsScreens(this.toggleLike, this.isLike, {super.key});
 
-  void goToMealIteam(BuildContext context) {
-    Navigator.pushNamed(context, MealItems.routName);
-  }
-
   @override
   Widget build(BuildContext context) {
     final meal =

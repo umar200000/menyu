@@ -39,6 +39,7 @@ class _FavoritePageState extends State<FavoritePage> {
             ),
           ),
         ]),
+        duration: Duration(seconds: 3),
       ),
     );
   }

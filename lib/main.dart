@@ -5,6 +5,7 @@ import 'package:ovqatlar_minyusi/model_page/categories_model.dart';
 import 'package:ovqatlar_minyusi/model_page/meals_model.dart';
 import 'package:ovqatlar_minyusi/widgets/categories_meals_screens.dart';
 import 'package:ovqatlar_minyusi/widgets/meal_items.dart';
+import 'package:ovqatlar_minyusi/widgets/productScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -39,9 +40,9 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.amber,
         fontFamily: GoogleFonts.caudex().fontFamily,
       ),
-      initialRoute: '/',
+      initialRoute: BottomBar.routeName,
       routes: {
-        '/': (ctx) => BottomBar(
+        BottomBar.routeName: (ctx) => BottomBar(
               categoryList: categories.categoriesList,
               mealsKeeper: mealsKeeper,
               toggleLike: toggleLike,
@@ -50,6 +51,7 @@ class _MyAppState extends State<MyApp> {
         '/categories_meals_screens': (ctx) =>
             CategoriesMealsScreens(toggleLike, isLike),
         MealItems.routName: (ctx) => MealItems(),
+        ProductScreen.routeName: (ctx) => ProductScreen(),
       },
     );
   }

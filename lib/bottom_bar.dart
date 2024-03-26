@@ -7,6 +7,7 @@ import 'model_page/categories_model.dart';
 import 'model_page/meals_model.dart';
 
 class BottomBar extends StatefulWidget {
+  static const routeName = "BottomBarPage";
   final List<CategoriesModel> categoryList;
   final MealsKeeper mealsKeeper;
   final void Function(String id, int a) toggleLike;
