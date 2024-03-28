@@ -42,10 +42,15 @@ class _MealItemsState extends State<MealItems> {
                   builder: (BuildContext context) {
                     return Container(
                       width: MediaQuery.of(context).size.width,
-                      child: Image.asset(
-                        imgUrl,
-                        fit: BoxFit.cover,
-                      ),
+                      child: imgUrl.startsWith("assets/")
+                          ? Image.asset(
+                              imgUrl,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.network(
+                              imgUrl,
+                              fit: BoxFit.cover,
+                            ),
                     );
                   },
                 );

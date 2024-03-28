@@ -34,12 +34,16 @@ class MealPhoto extends StatelessWidget {
             Stack(
               children: [
                 AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: Image.asset(
-                    meal.imhUrl[0],
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                    aspectRatio: 16 / 9,
+                    child: meal.imhUrl[0].startsWith("assets/")
+                        ? Image.asset(
+                            meal.imhUrl[0],
+                            fit: BoxFit.cover,
+                          )
+                        : Image.network(
+                            meal.imhUrl[0],
+                            fit: BoxFit.cover,
+                          )),
                 Positioned(
                   right: 0,
                   bottom: 0,

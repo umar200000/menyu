@@ -166,4 +166,8 @@ class MealsKeeper {
       _favorite.removeWhere((element) => element.id == id);
     }
   }
+
+  void addMeal(MealsModel meal) {
+    _list.add(meal);
+  }
 }
