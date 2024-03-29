@@ -7,6 +7,7 @@ import 'img_url_page.dart';
 class AddNewProducts extends StatefulWidget {
   final List<CategoriesModel> categories;
   final void Function(MealsModel meal) addNewMeal;
+
   const AddNewProducts(
       {super.key, required this.categories, required this.addNewMeal});
   static const routeName = "add-new-products";
@@ -71,7 +72,7 @@ class _AddNewProductsState extends State<AddNewProducts> {
         ),
       ),
     );
-    Navigator.pop(context);
+    Navigator.pop(context, true);
   }
 
   @override

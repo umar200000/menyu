@@ -23,7 +23,15 @@ class _MyAppState extends State<MyApp> {
   final MealsKeeper mealsKeeper = MealsKeeper();
 
   void addNewMeal(MealsModel meal) {
-    mealsKeeper.addMeal(meal);
+    setState(() {
+      mealsKeeper.addMeal(meal);
+    });
+  }
+
+  void deleteFood(String id) {
+    setState(() {
+      mealsKeeper.deleteMeal(id);
+    });
   }
 
   void toggleLike(String id, int a) {
@@ -58,6 +66,7 @@ class _MyAppState extends State<MyApp> {
         MealItems.routName: (ctx) => MealItems(),
         ProductScreen.routeName: (ctx) => ProductScreen(
               meals: mealsKeeper.mealsList,
+              deleteFood: deleteFood,
             ),
         AddNewProducts.routeName: (ctx) => AddNewProducts(
             categories: categories.categoriesList, addNewMeal: addNewMeal),
